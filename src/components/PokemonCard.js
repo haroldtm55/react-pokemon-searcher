@@ -9,11 +9,17 @@ class PokemonCard extends React.Component {
   displayImg = () => (
     this.state.frontImg ? this.props.pokeInfo.sprites.front : this.props.pokeInfo.sprites.back
   )
+
+  handleClick = () => {
+    this.setState(prevState => {
+      return {frontImg: !prevState.frontImg}
+    })
+  }
   
   render() {
     return (
       <Card>
-        <div onClick={()=>this.setState({frontImg: !this.state.frontImg})}>
+        <div onClick={this.handleClick}>
           <div className="image">
             <img src={this.displayImg()} alt={this.props.pokeInfo.name} />
           </div>

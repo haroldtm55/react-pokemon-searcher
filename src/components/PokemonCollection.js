@@ -12,7 +12,6 @@ class PokemonCollection extends React.Component {
   }
 
   render() {
-    console.log(this.props.pokemons)
     return (
       <Card.Group itemsPerRow={6}>
         {this.filterCollection()}

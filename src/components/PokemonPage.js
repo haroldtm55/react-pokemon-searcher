@@ -36,62 +36,26 @@ class PokemonPage extends React.Component {
         <h1>Pokemon Searcher</h1>
         <br />
         <PokemonForm 
-          handleNameChange={this.handleNameChange}
-          handleHpChange={this.handleHpChange}
-          handleFrontUrlChange={this.handleFrontUrlChange}
-          handleBackUrlChange={this.handleBackUrlChange}
+          // handleNameChange={this.handleNameChange}
+          // handleHpChange={this.handleHpChange}
+          // handleFrontUrlChange={this.handleFrontUrlChange}
+          // handleBackUrlChange={this.handleBackUrlChange}
+          handleChange = {this.handleChange}
           handleSubmit={this.handleSubmit}
           inputValues={this.state.form}/>
         <br />
-        <Search handleKeywordChange={this.handleKeywordChange}/>
+        <Search handleChange={this.handleChange}/>
         <br />
         <PokemonCollection pokemons={this.state.pokemons} keyword={this.state.keyword}/>
       </Container>
     )
   }
 
-  displayImg = () => (
-    this.state.frontImg ? this.props.pokeInfo.sprites.front : this.props.pokeInfo.sprites.back
-  )
-
-  handleKeywordChange = event => {
-    this.setState({
-      keyword: event.target.value
-    }, ()=>console.log(this.state.keyword))
-  }
-
-  handleNameChange = event => {
+  handleChange = event => {
     this.setState({
       form: {
         ...this.state.form,
-        name: event.target.value
-      }
-    })
-  }
-
-  handleHpChange = event => {
-    this.setState({
-      form: {
-        ...this.state.form,
-        hp: event.target.value
-      }
-    })
-  }
-
-  handleFrontUrlChange = event => {
-    this.setState({
-      form: {
-        ...this.state.form,
-        frontUrl: event.target.value
-      }
-    })
-  }
-
-  handleBackUrlChange = event => {
-    this.setState({
-      form: {
-        ...this.state.form,
-        backUrl: event.target.value
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -126,7 +90,6 @@ class PokemonPage extends React.Component {
       }
     })
   }
-
 }
 
 export default PokemonPage
